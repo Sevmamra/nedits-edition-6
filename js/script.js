@@ -233,6 +233,59 @@ document.addEventListener('DOMContentLoaded', function() {
   // 10. Contact Form
   handleContactForm();
 
+  // 11. Footer Functionality
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+  
+  const newsletterForm = document.querySelector('.newsletter-form');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const emailInput = this.querySelector('input[type="email"]');
+      const submitBtn = this.querySelector('button');
+      
+      const originalHTML = submitBtn.innerHTML;
+      submitBtn.innerHTML = `
+        <svg class="spinner" viewBox="0 0 50 50">
+          <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="5"></circle>
+        </svg>
+      `;
+      
+      setTimeout(() => {
+        submitBtn.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        `;
+        emailInput.value = '';
+        
+        const successMsg = document.createElement('p');
+        successMsg.className = 'newsletter-success';
+        successMsg.textContent = 'Thanks for subscribing!';
+        successMsg.style.color = '#7b0091';
+        successMsg.style.marginTop = '10px';
+        successMsg.style.fontSize = '0.9rem';
+        newsletterForm.appendChild(successMsg);
+        
+        setTimeout(() => {
+          submitBtn.innerHTML = originalHTML;
+          successMsg.remove();
+        }, 3000);
+      }, 1500);
+    });
+  }
+  
+  // Footer link animations
+  const footerLinks = document.querySelectorAll('.footer-links a, .footer-services a');
+  footerLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      link.style.transform = 'translateX(5px)';
+    });
+    link.addEventListener('mouseleave', () => {
+      link.style.transform = 'translateX(0)';
+    });
+  });
+});
 
 // Testimonials Carousel Function
 function initTestimonialsCarousel() {
