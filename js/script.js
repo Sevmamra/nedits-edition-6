@@ -199,19 +199,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // 7. Counter Animations
-  const achievements = document.getElementById("achievements");
-  if (achievements) {
-    const counterObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        animateCounter("clientsCounter", 150, 4000);
-        animateCounter("projectsCounter", 300, 4000);
-        animateCounter("experienceCounter", 5, 2000);
-        counterObserver.disconnect();
-      }
-    }, { threshold: 0.3 });
-    counterObserver.observe(achievements);
-  }
 
   // 8. Timeline Animations
   const timelineItems = document.querySelectorAll('.timeline-item');
@@ -452,13 +439,14 @@ function handleContactForm() {
   });
 }
 
-// Counter Animation Function
+// Update your existing counter animation function with this:
 function animateCounter(elementId, target, duration) {
   const element = document.getElementById(elementId);
   if (!element) return;
   
   let start = 0;
   const increment = target / (duration / 16);
+  const suffix = elementId === 'successRateCounter' ? '%' : '+';
   
   const updateCounter = () => {
     start += increment;
@@ -467,8 +455,35 @@ function animateCounter(elementId, target, duration) {
       requestAnimationFrame(updateCounter);
     } else {
       element.textContent = target;
+      // Update the suffix in case it's dynamic
+      const suffixElement = element.nextElementSibling;
+      if (suffixElement && suffixElement.classList.contains('counter-suffix')) {
+        suffixElement.textContent = suffix;
+      }
     }
   };
   
   requestAnimationFrame(updateCounter);
 }
+
+// Update your counter initialization (add the new counter)
+document.addEventListener('DOMContentLoaded', function() {
+  // ... existing code ...
+  
+  const achievements = document.getElementById("achievements");
+  if (achievements) {
+    const counterObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        animateCounter("clientsCounter", 150, 4000);
+        animateCounter("projectsCounter", 300, 4000);
+        animateCounter("experienceCounter", 5, 2000);
+        animateCounter("successRateCounter", 98, 3000);
+        counterObserver.disconnect();
+      }
+    }, { threshold: 0.3 });
+    counterObserver.observe(achievements);
+  }
+  
+  // ... rest of your code ...
+});
+
