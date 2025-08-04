@@ -439,51 +439,71 @@ function handleContactForm() {
   });
 }
 
-// Update your existing counter animation function with this:
-function animateCounter(elementId, target, duration) {
-  const element = document.getElementById(elementId);
-  if (!element) return;
-  
-  let start = 0;
-  const increment = target / (duration / 16);
-  const suffix = elementId === 'successRateCounter' ? '%' : '+';
-  
-  const updateCounter = () => {
-    start += increment;
-    if (start < target) {
-      element.textContent = Math.floor(start);
-      requestAnimationFrame(updateCounter);
-    } else {
-      element.textContent = target;
-      // Update the suffix in case it's dynamic
-      const suffixElement = element.nextElementSibling;
-      if (suffixElement && suffixElement.classList.contains('counter-suffix')) {
-        suffixElement.textContent = suffix;
-      }
-    }
-  };
-  
-  requestAnimationFrame(updateCounter);
-}
-
-// Update your counter initialization (add the new counter)
+// Achievements Section JavaScript
 document.addEventListener('DOMContentLoaded', function() {
-  // ... existing code ...
-  
-  const achievements = document.getElementById("achievements");
-  if (achievements) {
+  // Initialize achievement counters
+  const achievementsSection = document.getElementById("achievements");
+  if (achievementsSection) {
     const counterObserver = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
+        // Animate all counters
         animateCounter("clientsCounter", 150, 4000);
         animateCounter("projectsCounter", 300, 4000);
         animateCounter("experienceCounter", 5, 2000);
         animateCounter("successRateCounter", 98, 3000);
-        counterObserver.disconnect();
-      }
-    }, { threshold: 0.3 });
-    counterObserver.observe(achievements);
-  }
-  
-  // ... rest of your code ...
-});
+        
 
+  // Enhanced counter animation function
+  function animateCounter(elementId, target, duration) {
+    const element = document.getElementById(elementId);
+    if (!element) return;
+    
+    let start = 0;
+    const increment = target / (duration / 16);
+    const suffix = elementId === 'successRateCounter' ? '%' : '+';
+    
+    const updateCounter = () => {
+      start += increment;
+      if (start < target) {
+        element.textContent = Math.floor(start);
+        requestAnimationFrame(updateCounter);
+      } else {
+        element.textContent = target;
+        // Update the suffix
+        const suffixElement = element.nextElementSibling;
+        if (suffixElement && suffixElement.classList.contains('counter-suffix')) {
+          suffixElement.textContent = suffix;
+        }
+      }
+    };
+    
+    requestAnimationFrame(updateCounter);
+  }
+
+  // Optional: Add hover effect to achievement cards
+  const achievementCards = document.querySelectorAll('.achievement-card');
+  achievementCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      card.style.transform = 'translateY(-10px)';
+      card.style.boxShadow = '0 15px 40px rgba(123, 0, 145, 0.15)';
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.boxShadow = '0 10px 30px rgba(123, 0, 145, 0.1)';
+    });
+  });
+
+  // Optional: Add click effect to "Get in Touch" button
+  const achievementBtn = document.querySelector('.achievement-btn');
+  if (achievementBtn) {
+    achievementBtn.addEventListener('click', function(e) {
+      if (this.href.includes('#contact')) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    });
+  }
+});
