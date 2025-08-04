@@ -201,18 +201,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   // 8. Timeline Animations
+// Add this with your other initialization code
+function initJourneySection() {
   const timelineItems = document.querySelectorAll('.timeline-item');
-  if (timelineItems.length > 0) {
-    const timelineObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          timelineObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    timelineItems.forEach(item => timelineObserver.observe(item));
-  }
+  
+  // Animate timeline items when they come into view
+  const timelineObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+        timelineObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  timelineItems.forEach(item => {
+    item.style.opacity = 0;
+    item.style.transform = 'translateY(30px)';
+    item.style.transition = 'all 0.6s ease-out';
+    timelineObserver.observe(item);
+  });
+
+  // Optional: Add click effect to timeline cards
+  const timelineCards = document.querySelectorAll('.timeline-card');
+  timelineCards.forEach(card => {
+    card.addEventListener('click', function() {
+      this.style.transform = 'translateY(-5px) scale(1.02)';
+      setTimeout(() => {
+        this.style.transform = 'translateY(-5px)';
+      }, 200);
+    });
+  });
+}
+
+// Call this when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  initJourneySection();
+  // ... your other initialization code ...
+});
 
   // 9. Testimonials Carousel
   initTestimonialsCarousel();
