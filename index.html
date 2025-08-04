@@ -46,8 +46,6 @@
     </ul>
   </nav>
 
-  <main class="main-content-wrapper">
-
   <!-- Hero Section -->
   <section class="hero" id="home" aria-labelledby="hero-heading">
     <div class="container">
@@ -409,17 +407,88 @@
     </div>
   </div>
 </section>
-  
-  <!-- Achievements Section -->
-  <section class="section" id="achievements" aria-labelledby="achievements-heading">
-    <h2 id="achievements-heading" class="section-title">Our Achievements</h2>
-    <div class="counters-container">
-      <div class="counter"><h3 id="clientsCounter">0</h3><p>Happy Clients</p></div>
-      <div class="counter"><h3 id="projectsCounter">0</h3><p>Projects Completed</p></div>
-      <div class="counter"><h3 id="experienceCounter">0</h3><p>Years of Experience</p></div>
-    </div>
-  </section>
 
+<!-- ==================== -->
+<!-- ACHIEVEMENTS SECTION -->
+<!-- ==================== --> 
+<section class="achievements-section" id="achievements" aria-labelledby="achievements-heading">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <h2 id="achievements-heading" class="section-title">Our Achievements</h2>
+      <p class="section-subtitle">Milestones that showcase our growth and success</p>
+    </div>
+
+    <div class="achievements-grid">
+      <!-- Counter 1 -->
+      <div class="achievement-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="achievement-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#7b0091" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <div class="counter-container">
+          <h3 id="clientsCounter" class="counter">0</h3>
+          <span class="counter-suffix">+</span>
+        </div>
+        <p class="achievement-label">Happy Clients</p>
+      </div>
+
+      <!-- Counter 2 -->
+      <div class="achievement-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="achievement-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#7b0091" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
+            <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path>
+          </svg>
+        </div>
+        <div class="counter-container">
+          <h3 id="projectsCounter" class="counter">0</h3>
+          <span class="counter-suffix">+</span>
+        </div>
+        <p class="achievement-label">Projects Completed</p>
+      </div>
+
+      <!-- Counter 3 -->
+      <div class="achievement-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="achievement-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#7b0091" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="7"></circle>
+            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+          </svg>
+        </div>
+        <div class="counter-container">
+          <h3 id="experienceCounter" class="counter">0</h3>
+          <span class="counter-suffix">+</span>
+        </div>
+        <p class="achievement-label">Years of Experience</p>
+      </div>
+
+      <!-- Counter 4 -->
+      <div class="achievement-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="achievement-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#7b0091" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <div class="counter-container">
+          <h3 id="successRateCounter" class="counter">0</h3>
+          <span class="counter-suffix">%</span>
+        </div>
+        <p class="achievement-label">Success Rate</p>
+      </div>
+    </div>
+
+    <div class="achievements-cta" data-aos="fade-up" data-aos-delay="500">
+      <p>Ready to start your project with us?</p>
+      <a href="#contact" class="btn achievement-btn">Get in Touch</a>
+    </div>
+  </div>
+</section>
+  
 <!-- ==================== -->
 <!-- TESTIMONIALS SECTION -->
 <!-- ==================== -->
@@ -757,8 +826,6 @@
     </svg>
   </div>
 </section>
-
-    </main>
   
 <!-- ==================== -->
 <!-- FOOTER SECTION -->
