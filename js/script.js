@@ -547,10 +547,7 @@ function initFooter() {
     });
   });
 }
-function initSkillsSection() {
-  const skillsSection = document.querySelector('.skills-section');
-  if (!skillsSection) return;
-  
+
 /**
  * Skills Section - Interactive Elements
  */
