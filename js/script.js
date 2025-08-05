@@ -50,6 +50,8 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // 6. Smooth Scrolling
   initSmoothScrolling();
+
+  initSkillsSection();
   
   // 7. Achievements Counters
   initAchievementsCounters();
@@ -549,32 +551,89 @@ function initSkillsSection() {
   const skillsSection = document.querySelector('.skills-section');
   if (!skillsSection) return;
   
-  // Add hover effects to skill categories
-  const skillCategories = document.querySelectorAll('.skill-category');
-  skillCategories.forEach(category => {
-    category.addEventListener('mouseenter', () => {
-      category.style.transform = 'scale(1.05) translateY(-5px)';
-      category.style.boxShadow = '0 15px 40px rgba(123, 0, 145, 0.15)';
-    });
-    
-    category.addEventListener('mouseleave', () => {
-      category.style.transform = '';
-      category.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
-    });
-  });
-  
-  // Animate central circle on scroll
-  const circleObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const circlePulse = entry.target.querySelector('.circle-pulse');
-        circlePulse.style.animation = 'pulse 2s infinite';
-      }
-    });
-  }, { threshold: 0.5 });
-  
+/**
+ * Skills Section - Interactive Elements
+ */
+
+function initSkillsSection() {
+  const skillsSection = document.getElementById('skills');
+  if (!skillsSection) return;
+
+  // 1. Central Circle Animation
   const centralCircle = document.querySelector('.central-circle');
   if (centralCircle) {
+    // Add pulse animation when section is visible
+    const circleObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const pulse = entry.target.querySelector('.circle-pulse');
+        if (entry.isIntersecting) {
+          pulse.style.animation = 'pulse 2s infinite';
+        } else {
+          pulse.style.animation = 'none';
+        }
+      });
+    }, { threshold: 0.5 });
+    
     circleObserver.observe(centralCircle);
+
+    // Add click effect
+    centralCircle.addEventListener('click', function() {
+      this.style.transform = 'translate(-50%, -50%) scale(0.95)';
+      setTimeout(() => {
+        this.style.transform = 'translate(-50%, -50%)';
+      }, 200);
+    });
   }
+
+  // 2. Skill Category Interactions
+  const skillCategories = document.querySelectorAll('.skill-category');
+  skillCategories.forEach(category => {
+    // Hover effects
+    category.addEventListener('mouseenter', function() {
+      this.style.transform = 'scale(1.05) translateY(-5px)';
+      this.style.boxShadow = '0 15px 40px rgba(123, 0, 145, 0.15)';
+      
+      // Highlight matching icon
+      const icon = this.querySelector('.skill-icon');
+      icon.style.background = '#7b0091';
+      icon.querySelector('svg').style.color = 'white';
+    });
+
+    category.addEventListener('mouseleave', function() {
+      this.style.transform = '';
+      this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+      
+      // Reset icon
+      const icon = this.querySelector('.skill-icon');
+      icon.style.background = 'rgba(123, 0, 145, 0.1)';
+      icon.querySelector('svg').style.color = '#7b0091';
+    });
+
+    // Click animation
+    category.addEventListener('click', function() {
+      this.style.transform = 'scale(0.98)';
+      setTimeout(() => {
+        this.style.transform = 'scale(1.05) translateY(-5px)';
+      }, 200);
+    });
+  });
+
+  // 3. Animate skills when they come into view
+  const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+        skillObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  // Set initial state and observe
+  document.querySelectorAll('.skill-category').forEach(card => {
+    card.style.opacity = 0;
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    skillObserver.observe(card);
+  });
 }
