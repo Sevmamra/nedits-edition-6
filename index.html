@@ -357,24 +357,95 @@
 </section>
  
   <!-- Skills Section -->
-  <section class="section skills-orbit" aria-labelledby="skills-heading">
-    <h2 id="skills-heading" class="section-title">Skills</h2>
-    <div class="orbit-container">
-      <div class="center-sun">We</div>
-      <div class="orbit orbit-1">
-        <div class="orbit-label">EDIT</div>
+<!-- Replace the entire skills-orbit section (around line 700) with this: -->
+<section class="skills-section" id="skills" aria-labelledby="skills-heading">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <h2 id="skills-heading" class="section-title">Our Core Skills</h2>
+      <p class="section-subtitle">The foundation of our digital expertise</p>
+    </div>
+
+    <div class="skills-container">
+      <!-- Central Circle -->
+      <div class="central-circle" data-aos="zoom-in">
+        <div class="circle-content">
+          <span>We</span>
+          <div class="circle-pulse"></div>
+        </div>
       </div>
-      <div class="orbit orbit-2">
-        <div class="orbit-label">DESIGN</div>
+
+<!-- ==================== -->
+<!-- SKILL SECTION -->
+<!-- ==================== --> 
+      <div class="skill-category design" data-aos="fade-right">
+        <div class="skill-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <h3>Design</h3>
+        <ul class="skill-list">
+          <li>UI/UX Design</li>
+          <li>Graphic Design</li>
+          <li>Motion Graphics</li>
+          <li>Brand Identity</li>
+        </ul>
       </div>
-      <div class="orbit orbit-3">
-        <div class="orbit-label">DEVELOP</div>
+
+      <div class="skill-category develop" data-aos="fade-left">
+        <div class="skill-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+        </div>
+        <h3>Develop</h3>
+        <ul class="skill-list">
+          <li>Web Development</li>
+          <li>Mobile Apps</li>
+          <li>E-commerce</li>
+          <li>Custom Solutions</li>
+        </ul>
       </div>
-      <div class="orbit orbit-4">
-        <div class="orbit-label">MANAGE</div>
+
+      <div class="skill-category edit" data-aos="fade-right" data-aos-delay="100">
+        <div class="skill-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="23 7 16 12 23 17 23 7"></polygon>
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+          </svg>
+        </div>
+        <h3>Edit</h3>
+        <ul class="skill-list">
+          <li>Video Editing</li>
+          <li>Photo Editing</li>
+          <li>Motion Graphics</li>
+          <li>Post Production</li>
+        </ul>
+      </div>
+
+      <div class="skill-category manage" data-aos="fade-left" data-aos-delay="100">
+        <div class="skill-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <h3>Manage</h3>
+        <ul class="skill-list">
+          <li>Digital Marketing</li>
+          <li>Social Media</li>
+          <li>Content Strategy</li>
+          <li>Campaign Management</li>
+        </ul>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 <!-- ==================== -->
 <!-- JOURNEY SECTION -->
