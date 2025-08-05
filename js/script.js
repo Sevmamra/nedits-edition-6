@@ -545,3 +545,36 @@ function initFooter() {
     });
   });
 }
+function initSkillsSection() {
+  const skillsSection = document.querySelector('.skills-section');
+  if (!skillsSection) return;
+  
+  // Add hover effects to skill categories
+  const skillCategories = document.querySelectorAll('.skill-category');
+  skillCategories.forEach(category => {
+    category.addEventListener('mouseenter', () => {
+      category.style.transform = 'scale(1.05) translateY(-5px)';
+      category.style.boxShadow = '0 15px 40px rgba(123, 0, 145, 0.15)';
+    });
+    
+    category.addEventListener('mouseleave', () => {
+      category.style.transform = '';
+      category.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+    });
+  });
+  
+  // Animate central circle on scroll
+  const circleObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const circlePulse = entry.target.querySelector('.circle-pulse');
+        circlePulse.style.animation = 'pulse 2s infinite';
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  const centralCircle = document.querySelector('.central-circle');
+  if (centralCircle) {
+    circleObserver.observe(centralCircle);
+  }
+}
